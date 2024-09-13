@@ -1,0 +1,22 @@
+class Solution {
+    public int[] xorQueries(int[] arr, int[][] queries) {
+        int output[]=new int[queries.length];
+        for(int i=0;i<queries.length;i++){
+            int n1=queries[i][0];
+            int n2=queries[i][1];
+            int x=0;
+            boolean tag=false;
+            while(n1<n2){
+                tag=true;
+                int num1=arr[n1];
+                int num2=arr[n1+1];
+                x=x^num1^num2;
+                n1=n1+2;
+            }
+            if((n2-n1+1)%2!=0)
+                x=x^arr[n2];   
+            output[i]=x;
+        }
+        return output;
+    }
+}
